@@ -11,8 +11,20 @@ export type SetSelected = Dispatch<SetStateAction<number[]>>
 export type ItemsListContainerRef = RefObject<HTMLElement>
 export type OnChange = ChangeEvent<HTMLInputElement>
 
+export interface UseSelection {
+  itemsListContainerRef: ItemsListContainerRef
+  selectedItems: number[]
+  setSelectedItems: SetSelected
+  handleToggleSelect: (event: OnChange, index: number) => void
+  handleToggleSelectAll: (event: OnChange, itemsCount: number) => void
+}
+
 const methods = {
-  selectItem(index: number, selectedItems: number[], setSelected: SetSelected) {
+  selectItem(
+    index: number,
+    selectedItems: number[],
+    setSelected: SetSelected
+  ): void {
     const nextState = [...selectedItems, index]
 
     setSelected(nextState)
@@ -22,7 +34,7 @@ const methods = {
     listOfIndex: number[],
     selectedItems: number[],
     setSelected: SetSelected
-  ) {
+  ): void {
     setSelected(selectedItems.filter((index) => !listOfIndex.includes(index)))
   },
 
@@ -31,7 +43,7 @@ const methods = {
     index: number,
     selectedItems: number[],
     setSelected: SetSelected
-  ) {
+  ): void {
     event.target.checked
       ? methods.selectItem(index, selectedItems, setSelected)
       : methods.unSelectItems([index], selectedItems, setSelected)
@@ -43,7 +55,7 @@ const methods = {
     itemsCount: number,
     selectedItems: number[],
     setSelected: SetSelected
-  ) {
+  ): void {
     const listOfIndex = new Array(itemsCount).fill(null).map((_x, i) => i)
 
     event.target.checked
@@ -62,7 +74,7 @@ const methods = {
   }
 }
 
-const useSelection = () => {
+const useSelection = (): UseSelection => {
   const itemsListContainerRef = useRef<HTMLElement>(null)
 
   const [selectedItems, setSelectedItems] = useState<number[]>([])
@@ -73,11 +85,11 @@ const useSelection = () => {
     selectedItems,
     setSelectedItems,
 
-    handleToggleSelect(event: OnChange, index: number) {
+    handleToggleSelect(event, index) {
       methods.toggleSelect(event, index, selectedItems, setSelectedItems)
     },
 
-    handleToggleSelectAll(event: OnChange, itemsCount: number) {
+    handleToggleSelectAll(event, itemsCount) {
       methods.toggleSelectAll(
         event,
         itemsListContainerRef,
