@@ -4,13 +4,19 @@
 
 [![NPM](https://img.shields.io/npm/v/use-selection.svg)](https://www.npmjs.com/package/use-selection) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
-## Install
+## ⬇️ Install
 
 ```bash
 npm install --save use-selection
 ```
 
-## Usage
+## 🤳🏽 Demo
+
+See `useSelection` hook in action.
+
+<img src="./useSelection.gif" alt="See useSelection demo" width="350" style="border-radius: 10px" />
+
+## 🪝 Usage
 
 ```jsx
 import React, { useState } from 'react';
@@ -70,8 +76,7 @@ const Example = () => {
             />
 
             <span>
-              Name: {person.name}
-              Age: {person.age}
+              Name: {person.name} &bull; Age: {person.age}
             </span>
           </li>
         ))}
