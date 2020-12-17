@@ -8,9 +8,9 @@
 
 See `useSelection` hook in action.
 
-<img src="./useSelection.gif" alt="See useSelection demo" width="350" style="border-radius: 10px" />
+<img src="./useSelection.gif" alt="See useSelection demo" width="350"/>
 
-## ⬇️ Install
+## 📦 Install
 
 ```bash
 npm install --save use-selection
