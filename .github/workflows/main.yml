@@ -1,0 +1,23 @@
+# Name for the github action
+name: Build & Publish
+
+# Trigger this action when we push to master or merge a pull-request to master
+on:
+  push:
+    branches:
+      - master
+
+# runs the jobs
+jobs:
+  build:
+    # runs on ubuntu
+    runs-on: ubuntu-latest
+    steps:
+      # checkout to github
+      - uses: actions/checkout@v2
+      # semantic release action from third party
+      - uses: codfish/semantic-release-action@master
+    # Add the environment variable for NPM and github. Github is needed because semantic-release will create a new release and release notes automatically
+    env:
+      GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+      NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
