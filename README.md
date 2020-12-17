@@ -88,7 +88,7 @@ const Example = () => {
 export default Example;
 ```
 
-### 💜 TypeScript usage example
+### 💜 TypeScript
 
 ```tsx
 import React, { FC, useState } from 'react';
