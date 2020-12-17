@@ -18,6 +18,7 @@ jobs:
       # install dependencies
       - name: Install dependencies
         run: npm i
+      # build package
       - name: Build package
         run: npm run build
       # semantic release action from third party
