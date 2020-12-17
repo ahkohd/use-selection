@@ -5,18 +5,18 @@ import {
   SetStateAction,
   RefObject,
   ChangeEvent
-} from 'react'
+} from 'react';
 
-export type SetSelected = Dispatch<SetStateAction<number[]>>
-export type ItemsListContainerRef = RefObject<HTMLElement>
-export type OnChange = ChangeEvent<HTMLInputElement>
+export type SetSelected = Dispatch<SetStateAction<number[]>>;
+export type ItemsListContainerRef = RefObject<HTMLElement>;
+export type OnChange = ChangeEvent<HTMLInputElement>;
 
 export interface UseSelection {
-  itemsListContainerRef: ItemsListContainerRef
-  selectedItems: number[]
-  setSelectedItems: SetSelected
-  handleToggleSelect: (event: OnChange, index: number) => void
-  handleToggleSelectAll: (event: OnChange, itemsCount: number) => void
+  itemsListContainerRef: ItemsListContainerRef;
+  selectedItems: number[];
+  setSelectedItems: SetSelected;
+  handleToggleSelect: (event: OnChange, index: number) => void;
+  handleToggleSelectAll: (event: OnChange, itemsCount: number) => void;
 }
 
 const methods = {
@@ -25,9 +25,9 @@ const methods = {
     selectedItems: number[],
     setSelected: SetSelected
   ): void {
-    const nextState = [...selectedItems, index]
+    const nextState = [...selectedItems, index];
 
-    setSelected(nextState)
+    setSelected(nextState);
   },
 
   unSelectItems(
@@ -35,7 +35,7 @@ const methods = {
     selectedItems: number[],
     setSelected: SetSelected
   ): void {
-    setSelected(selectedItems.filter((index) => !listOfIndex.includes(index)))
+    setSelected(selectedItems.filter((index) => !listOfIndex.includes(index)));
   },
 
   toggleSelect(
@@ -46,7 +46,7 @@ const methods = {
   ): void {
     event.target.checked
       ? methods.selectItem(index, selectedItems, setSelected)
-      : methods.unSelectItems([index], selectedItems, setSelected)
+      : methods.unSelectItems([index], selectedItems, setSelected);
   },
 
   toggleSelectAll(
@@ -56,28 +56,28 @@ const methods = {
     selectedItems: number[],
     setSelected: SetSelected
   ): void {
-    const listOfIndex = new Array(itemsCount).fill(null).map((_x, i) => i)
+    const listOfIndex = new Array(itemsCount).fill(null).map((_x, i) => i);
 
     event.target.checked
       ? setSelected(listOfIndex)
-      : methods.unSelectItems(listOfIndex, selectedItems, setSelected)
+      : methods.unSelectItems(listOfIndex, selectedItems, setSelected);
 
     if (itemsListContainerRef.current) {
       const checkboxes: NodeListOf<Element> = itemsListContainerRef.current.querySelectorAll(
         'input[type=checkbox]'
-      )
+      );
 
       checkboxes.forEach((checkbox) => {
-        ;(checkbox as HTMLInputElement).checked = event.target.checked
-      })
+        (checkbox as HTMLInputElement).checked = event.target.checked;
+      });
     }
   }
-}
+};
 
 const useSelection = (): UseSelection => {
-  const itemsListContainerRef = useRef<HTMLElement>(null)
+  const itemsListContainerRef = useRef<HTMLElement>(null);
 
-  const [selectedItems, setSelectedItems] = useState<number[]>([])
+  const [selectedItems, setSelectedItems] = useState<number[]>([]);
 
   return {
     itemsListContainerRef,
@@ -85,20 +85,20 @@ const useSelection = (): UseSelection => {
     selectedItems,
     setSelectedItems,
 
-    handleToggleSelect(event, index) {
-      methods.toggleSelect(event, index, selectedItems, setSelectedItems)
+    handleToggleSelect(event, index): void {
+      methods.toggleSelect(event, index, selectedItems, setSelectedItems);
     },
 
-    handleToggleSelectAll(event, itemsCount) {
+    handleToggleSelectAll(event, itemsCount): void {
       methods.toggleSelectAll(
         event,
         itemsListContainerRef,
         itemsCount,
         selectedItems,
         setSelectedItems
-      )
+      );
     }
-  }
-}
+  };
+};
 
-export default useSelection
+export default useSelection;
