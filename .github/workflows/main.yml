@@ -19,5 +19,5 @@ jobs:
       - uses: codfish/semantic-release-action@master
     # Add the environment variable for NPM and github. Github is needed because semantic-release will create a new release and release notes automatically
     env:
-      GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+      GITHUB_TOKEN: ${{ secrets.github_token }}
       NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
