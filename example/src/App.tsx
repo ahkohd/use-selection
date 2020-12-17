@@ -1,4 +1,4 @@
-import React, { FC, RefObject, useState } from 'react';
+import React, { FC, useState } from 'react';
 
 import useSelection from 'use-selection';
 
@@ -31,12 +31,12 @@ const App: FC = () => {
     selectedItems,
     handleToggleSelect,
     handleToggleSelectAll
-  } = useSelection();
+  } = useSelection<HTMLUListElement>();
 
   return (
     <>
       You selected: {selectedItems.length} people.
-      <ul ref={itemsListContainerRef as RefObject<HTMLUListElement>}>
+      <ul ref={itemsListContainerRef}>
         <li>
           <label htmlFor='selectAll'>Toggle select all people:</label>
           <input
