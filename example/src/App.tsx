@@ -55,8 +55,7 @@ const App: FC = () => {
             />
 
             <span>
-              Name: {person.name}
-              Age: {person.age}
+              Name: {person.name} &bull; Age: {person.age}
             </span>
           </li>
         ))}
