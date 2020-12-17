@@ -1,6 +1,6 @@
 # ☑️ useSelection
 
-> 🪝 A react hook for handling selection of items in a list.
+> 🪝 A react hook for handling items selection in a list.
 
 [![NPM](https://img.shields.io/npm/v/use-selection.svg)](https://www.npmjs.com/package/use-selection) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
