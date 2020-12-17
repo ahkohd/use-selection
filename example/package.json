@@ -24,7 +24,7 @@
     "use-selection": "link:.."
   },
   "devDependencies": {
-    "@babel/plugin-syntax-object-rest-spread": "^7.8.3"
+    "@babel/plugin-syntax-object-rest-spread": "7.8.3"
   },
   "eslintConfig": {
     "extends": "react-app"
