@@ -7,6 +7,7 @@
   "repository": "ahkohd/use-selection",
   "main": "dist/index.js",
   "module": "dist/index.modern.js",
+  "jsnext:main": "dist/index.modern.js",
   "source": "src/index.tsx",
   "engines": {
     "node": ">=10"
