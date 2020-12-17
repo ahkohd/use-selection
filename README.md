@@ -53,7 +53,7 @@ const Example = () => {
       You selected: {selectedItems.length} people.
       <ul ref={itemsListContainerRef}>
         <li>
-          <label for='selectAll'>Toggle select all people:</label>
+          <label htmlFor='selectAll'>Toggle select all people:</label>
           <input
             type='checkbox'
             id='selectAll'
