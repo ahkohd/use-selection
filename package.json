@@ -1,7 +1,7 @@
 {
   "name": "use-selection",
   "version": "1.0.0",
-  "description": "A react hook for handling items selection",
+  "description": "A React hook to handle items selection in a list",
   "author": "ahkohd",
   "license": "MIT",
   "repository": "ahkohd/use-selection",
