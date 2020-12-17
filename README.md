@@ -4,7 +4,7 @@
 
 [![NPM](https://img.shields.io/npm/v/use-selection.svg)](https://www.npmjs.com/package/use-selection) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
-## 🤳🏽 useSelection on steroids
+## 🤳🏽 Demo
 
 See `useSelection` hook in action.
 
