@@ -8,11 +8,11 @@ import {
 } from 'react';
 
 export type SetSelected = Dispatch<SetStateAction<number[]>>;
-export type ItemsListContainerRef = RefObject<HTMLElement>;
+export type ItemsListContainerRef<T> = RefObject<T>;
 export type OnChange = ChangeEvent<HTMLInputElement>;
 
-export interface UseSelection {
-  itemsListContainerRef: ItemsListContainerRef;
+export interface UseSelection<T> {
+  itemsListContainerRef: ItemsListContainerRef<T>;
   selectedItems: number[];
   setSelectedItems: SetSelected;
   handleToggleSelect: (event: OnChange, index: number) => void;
@@ -49,9 +49,9 @@ const methods = {
       : methods.unSelectItems([index], selectedItems, setSelected);
   },
 
-  toggleSelectAll(
+  toggleSelectAll<T extends HTMLElement>(
     event: OnChange,
-    itemsListContainerRef: ItemsListContainerRef,
+    itemsListContainerRef: ItemsListContainerRef<T>,
     itemsCount: number,
     selectedItems: number[],
     setSelected: SetSelected
@@ -74,8 +74,8 @@ const methods = {
   }
 };
 
-const useSelection = (): UseSelection => {
-  const itemsListContainerRef = useRef<HTMLElement>(null);
+export default function useSelection<T extends HTMLElement>(): UseSelection<T> {
+  const itemsListContainerRef = useRef<T>(null);
 
   const [selectedItems, setSelectedItems] = useState<number[]>([]);
 
@@ -99,6 +99,4 @@ const useSelection = (): UseSelection => {
       );
     }
   };
-};
-
-export default useSelection;
+}
